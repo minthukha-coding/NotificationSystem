@@ -19,7 +19,7 @@ public class EmailNotificationProvider : INotificationProvider
         return await Task.FromResult(new NotificationResult
         {
             Success = true,
-            Message = $"Email sent to {message}"
+            Message = $"Email sent to {message.To}"
         });
     }
 }
