@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace NotificationSystem.Core.Templates;
+﻿namespace NotificationSystem.Core.Templates;
 
 public class RazorTemplateRenderer
 {
@@ -18,8 +12,9 @@ public class RazorTemplateRenderer
             .Build();
     }
 
-    //public async Task<string> RenderAsync(string templateKey, object model)
-    //{
-    //    return await _engine.CompileRenderAsync(templateKey, templateKey, model);
-    //}
+    public async Task<string> RenderTemplateAsync<T>(string templateKey, string templateContent, T model)
+    {
+        var template = await _engine.CompileTemplateAsync(templateContent);
+        return await _engine.RenderTemplateAsync(template,model);
+    }
 }
